@@ -777,6 +777,8 @@ video {
 	position: absolute;
 }.relative {
 	position: relative;
+}.sticky {
+	position: sticky;
 }.inset-0 {
 	top: 0px;
 	right: 0px;
@@ -1098,6 +1100,9 @@ video {
 }.bg-gray-700 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(55, 65, 81, var(--tw-bg-opacity));
+}.bg-trueGray-700 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(63, 63, 70, var(--tw-bg-opacity));
 }.bg-orange-500 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(249, 115, 22, var(--tw-bg-opacity));
