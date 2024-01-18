@@ -859,8 +859,6 @@ video {
 	margin-left: 1.5rem;
 }.mb-4 {
 	margin-bottom: 1rem;
-}.mr-4 {
-	margin-right: 1rem;
 }.mb-2 {
 	margin-bottom: 0.5rem;
 }.mb-3 {
@@ -945,8 +943,6 @@ video {
 	width: 0.5rem;
 }.w-96 {
 	width: 24rem;
-}.w-56 {
-	width: 14rem;
 }.min-w-0 {
 	min-width: 0px;
 }.max-w-screen-xl {
@@ -1572,6 +1568,8 @@ video {
 		margin-left: 2.5rem;
 	}.sm\:ml-6 {
 		margin-left: 1.5rem;
+	}.sm\:mr-4 {
+		margin-right: 1rem;
 	}.sm\:block {
 		display: block;
 	}.sm\:flex {
