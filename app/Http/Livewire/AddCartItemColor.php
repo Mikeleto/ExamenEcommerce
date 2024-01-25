@@ -17,6 +17,16 @@ class AddCartItemColor extends Component
         $this->colors = $this->product->colors;
     }
 
+    public function decrement()
+    {
+        $this->qty--;
+    }
+
+    public function increment()
+    {
+        $this->qty++;
+    }
+
     public function updatedColorId($value)
     {
         $this->quantity = $this->product->colors->find($value)->pivot->quantity;
