@@ -35,3 +35,11 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+
+
+Route::get('/deletecart', function () {
+    \Cart::destroy();
+});
+
