@@ -9,6 +9,13 @@ class ShoppingCart extends Component
 {
     public $listeners = ['render'];
 
+    public function delete($rowId)
+    {
+        Cart::remove($rowId);
+
+        $this->emit('render');
+    }
+
     public function destroy()
     {
         Cart::destroy();
