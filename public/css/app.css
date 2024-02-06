@@ -1243,6 +1243,8 @@ video {
 	--tw-bg-opacity: 0.25;
 }.bg-opacity-100 {
 	--tw-bg-opacity: 1;
+}.bg-opacity-75 {
+	--tw-bg-opacity: 0.75;
 }.bg-cover {
 	background-size: cover;
 }.bg-center {
