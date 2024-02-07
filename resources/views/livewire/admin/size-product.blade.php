@@ -1,3 +1,3 @@
 <div>
-    {{-- Stop trying to control. --}}
+    Necesita especificar una talla y un color
 </div>

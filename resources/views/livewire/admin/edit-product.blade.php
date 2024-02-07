@@ -101,14 +101,29 @@
             </div>
         @endif
 
-        <div class="flex mt-4">
-            <x-jet-button
-                wire:loading.attr="disabled"
-                wire:target="save"
-                wire:click="save"
-                class="ml-auto">
-                Actualizar producto
-            </x-jet-button>
+        <div class="flex justify-end items-center mt-4">
+            <x-jet-action-message class="mr-3" on="saved">
+                Actualizado
+            </x-jet-action-message>
+
+            <div class="flex mt-4">
+                <x-jet-button
+                    wire:loading.attr="disabled"
+                    wire:target="save"
+                    wire:click="save"
+                    class="ml-auto">
+                    Actualizar producto
+                </x-jet-button>
+            </div>
         </div>
     </div>
+
+    @if($this->subcategory)
+        @if($this->subcategory->size)
+            @livewire('admin.size-product', ['product' => $product], key('size-product-' . $product->id))
+        @elseif($this->subcategory->color)
+            @livewire('admin.color-product', ['product' => $product], key('color-product-' . $product->id))
+        @endif
+    @endif
+
 </div>
