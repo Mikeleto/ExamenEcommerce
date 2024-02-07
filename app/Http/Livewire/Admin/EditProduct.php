@@ -23,7 +23,7 @@ class EditProduct extends Component
         'product.description' => 'required',
         'product.brand_id' => 'required',
         'product.price' => 'required',
-        'product.quantity' => 'numeric',
+        'product.quantity' => '',
     ];
 
     public function mount(Product $product)
@@ -67,7 +67,7 @@ class EditProduct extends Component
 
         if ($this->product->subcategory_id) {
             if (!$this->subcategory->color && !$this->subcategory->size) {
-                $this->rules['product.quantity'] = 'required|numeric';
+                $this->rules['product.quantity'] = 'required';
             }
         }
 
