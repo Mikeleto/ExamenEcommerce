@@ -72,6 +72,7 @@ class CreateProduct extends Component
 
         $product->save();
 
+        return redirect()->route('admin.products.edit', $product);
     }
 
     public function render()
