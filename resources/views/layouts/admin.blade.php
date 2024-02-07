@@ -20,9 +20,7 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
-        <script src="{{ asset('vendor/glider-js/glider.min.js') }}"></script>
-        <script src="{{ asset('vendor/flex-slider/node_modules/jquery/dist/jquery.js') }}"></script>
-        <script src="{{ asset('vendor/flex-slider/jquery.flexslider-min.js') }}"></script>
+        <script src="{{ asset('vendor/ckeditor/build/ckeditor.js') }}"></script>
 
     </head>
     <body class="font-sans antialiased">
@@ -49,27 +47,6 @@
 
         @livewireScripts
 
-        <script>
-            function dropdown(){
-                return {
-                    open: false,
-                    show(){
-                        if(this.open){
-                            this.open = false;
-                            document.getElementsByTagName('html')[0].style.overflow = 'auto'
-                        }else{
-                            this.open = true;
-                            document.getElementsByTagName('html')[0].style.overflow = 'hidden'
-                        }
-                    },
-                    close(){
-                        this.open = false;
-                        document.getElementsByTagName('html')[0].style.overflow = 'auto'
-                    }
-                }
-            }
-        </script>
-
-    @stack('scripts')
+        @stack('scripts')
     </body>
 </html>
