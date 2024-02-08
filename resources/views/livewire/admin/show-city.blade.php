@@ -1,18 +1,18 @@
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight capitalize">
-            Departamento: {{ $department->name }}
+            Ciudad: {{$city->name}}
         </h2>
     </x-slot>
 
     <div class="container-menu py-12">
         <x-jet-form-section submit="save" class="mb-6">
             <x-slot name="title">
-                Agregar una nueva ciudad
+                Agregar una nueva distrito
             </x-slot>
 
             <x-slot name="description">
-                Complete la información necesaria para poder agregar una nueva ciudad
+                Complete la información necesaria para poder agregar un nuevo distrito
             </x-slot>
 
             <x-slot name="form">
@@ -26,20 +26,12 @@
                     <x-jet-input-error for="createForm.name" />
                 </div>
 
-                <div class="col-span-6 sm:col-span-4">
-                    <x-jet-label>
-                        Costo
-                    </x-jet-label>
-
-                    <x-jet-input wire:model.defer="createForm.cost" type="number" class="w-full mt-1" />
-
-                    <x-jet-input-error for="createForm.cost" />
-                </div>
             </x-slot>
 
             <x-slot name="actions">
+
                 <x-jet-action-message class="mr-3" on="saved">
-                    Ciudad agregada
+                    Distrito agregado
                 </x-jet-action-message>
 
                 <x-jet-button>
@@ -50,11 +42,11 @@
 
         <x-jet-action-section>
             <x-slot name="title">
-                Lista de ciudades
+                Lista de distritos
             </x-slot>
 
             <x-slot name="description">
-                Aquí encontrará todas las ciudades agregadas
+                Aquí encontrará todos los distritos
             </x-slot>
 
             <x-slot name="content">
@@ -67,16 +59,14 @@
                     </thead>
 
                     <tbody class="divide-y divide-gray-300">
-                    @foreach ($cities as $city)
+                    @foreach ($districts as $district)
                         <tr>
                             <td class="py-2">
-                                <a href="{{ route('admin.cities.show', $city) }}" class="uppercase underline hover:text-blue-600">
-                                    {{$city->name}}
-                                </a>
+                                {{$district->name}}
                             </td>
                             <td class="py-2">
                                 <div class="flex divide-x divide-gray-300 font-semibold">
-                                    <a class="pr-2 hover:text-blue-600 cursor-pointer" wire:click="edit({{$city}})">Editar</a>
+                                    <a class="pr-2 hover:text-blue-600 cursor-pointer" wire:click="edit({{$district}})">Editar</a>
                                     <a class="pl-2 hover:text-red-600 cursor-pointer" wire:click="">Eliminar</a>
                                 </div>
                             </td>
@@ -90,7 +80,7 @@
 
         <x-jet-dialog-modal wire:model="editForm.open">
             <x-slot name="title">
-                Editar departamento
+                Editar distrito
             </x-slot>
 
             <x-slot name="content">
@@ -103,16 +93,6 @@
                         <x-jet-input wire:model="editForm.name" type="text" class="w-full mt-1" />
 
                         <x-jet-input-error for="editForm.name" />
-                    </div>
-
-                    <div>
-                        <x-jet-label>
-                            Costo
-                        </x-jet-label>
-
-                        <x-jet-input wire:model="editForm.cost" type="text" class="w-full mt-1" />
-
-                        <x-jet-input-error for="editForm.cost" />
                     </div>
                 </div>
             </x-slot>
@@ -127,7 +107,7 @@
 
     @push('scripts')
         <script>
-            Livewire.on('deleteCity', cityId => {
+            Livewire.on('deleteDistrict', districtId => {
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
@@ -138,7 +118,7 @@
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        Livewire.emitTo('admin.show-department', 'delete', cityId)
+                        Livewire.emitTo('admin.city-component', 'delete', districtId)
                         Swal.fire(
                             'Deleted!',
                             'Your file has been deleted.',
