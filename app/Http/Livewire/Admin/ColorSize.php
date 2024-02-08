@@ -17,6 +17,8 @@ class ColorSize extends Component
         'quantity' => 'required|numeric'
     ];
 
+    protected $listeners = ['delete'];
+
     public function mount()
     {
         $this->colors = Color::all();
@@ -54,6 +56,12 @@ class ColorSize extends Component
         $this->size = $this->size->fresh();
 
         $this->open = false;
+    }
+
+    public function delete(TbPivot $pivot)
+    {
+        $pivot->delete();
+        $this->size = $this->size->fresh();
     }
 
     public function render()
