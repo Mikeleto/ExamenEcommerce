@@ -25,7 +25,7 @@ class CreateSubcategoriesTable extends Migration
             $table->boolean('size')->default(false);
 
             $table->foreignId('category_id')->references('id')
-                ->on('categories');
+                ->on('categories')->onDelete('cascade');
 
             $table->timestamps();
         });
