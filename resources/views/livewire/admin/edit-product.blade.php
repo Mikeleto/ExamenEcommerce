@@ -2,6 +2,11 @@
 
     <h1 class="text-3xl text-center font-semibold mb-8">Complete los datos para crear un producto</h1>
 
+    <div class="mb-4" wire:ignore>
+        <form action="{{ route('admin.products.files', $product) }}" method="POST"
+              class="dropzone" id="my-awesome-dropzone"></form>
+    </div>
+
     <div class="bg-white shadow-xl rounded-lg p-6">
         <div class="grid grid-cols-2 gap-6 mb-4">
             <div>
@@ -125,5 +130,19 @@
             @livewire('admin.color-product', ['product' => $product], key('color-product-' . $product->id))
         @endif
     @endif
+
+    @push('scripts')
+        <script>
+            Dropzone.options.myAwesomeDropzone = {
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                },
+                dictDefaultMessage: "Mueva una imagen al recuadro",
+                acceptedFiles: 'image/*',
+                paramName: "file", // The name that will be used to transfer the file
+                maxFilesize: 2 // MB
+            };
+        </script>
+    @endpush
 
 </div>

@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/sweetalert2/dist/sweetalert2.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/dropzone/dist/dropzone.css') }}">
 
         @livewireStyles
 
@@ -21,6 +22,7 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
         <script src="{{ asset('vendor/ckeditor/build/ckeditor.js') }}"></script>
         <script src="{{ asset('vendor/sweetalert2/dist/sweetalert2.js') }}"></script>
+        <script src="{{ asset('vendor/dropzone/dist/dropzone.js') }}"></script>
 
     </head>
     <body class="font-sans antialiased">
