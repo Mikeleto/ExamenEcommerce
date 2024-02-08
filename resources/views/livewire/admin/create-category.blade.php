@@ -13,21 +13,25 @@
                 <x-jet-label>
                     Nombre
                 </x-jet-label>
-                <x-jet-input type="text" class="w-full mt-1" />
+                <x-jet-input wire:model="createForm.name" type="text" class="w-full mt-1" />
+
+                <x-jet-input-error for="createForm.name" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label>
                     Slug
                 </x-jet-label>
-                <x-jet-input type="text" class="w-full mt-1" />
+                <x-jet-input disabled wire:model="createForm.slug" type="text" class="w-full mt-1 bg-gray-100" />
+                <x-jet-input-error for="createForm.slug" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label>
                     Icono
                 </x-jet-label>
-                <x-jet-input type="text" class="w-full mt-1" />
+                <x-jet-input wire:model.defer="createForm.icon" type="text" class="w-full mt-1" />
+                <x-jet-input-error for="createForm.icon" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
@@ -39,12 +43,16 @@
                     @foreach ($brands as $brand)
 
                         <x-jet-label>
-                            <x-jet-checkbox />
+                            <x-jet-checkbox
+                                wire:model.defer="createForm.brands"
+                                name="brands[]"
+                                value="{{$brand->id}}" />
                             {{$brand->name}}
                         </x-jet-label>
 
                     @endforeach
                 </div>
+                <x-jet-input-error for="createForm.brands" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
@@ -52,13 +60,18 @@
                     Imagen
                 </x-jet-label>
 
-                <input type="file" class="mt-1" name="" id="">
+                <input wire:model="createForm.image" accept="image/*" type="file" class="mt-1" name="" id="">
+                <x-jet-input-error for="createForm.image" />
             </div>
 
         </x-slot>
 
         <x-slot name="actions">
-
+            <x-button type="submit" color="green">
+                Crear categoría
+            </x-button><x-jet-button>
+                Agregar
+            </x-jet-button>
         </x-slot>
     </x-jet-form-section>
 </div>
