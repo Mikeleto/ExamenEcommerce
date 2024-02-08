@@ -13,7 +13,19 @@ class CreateCategory extends Component
     use WithFileUploads;
 
     public $brands, $categories, $image;
+    public $category;
+    public $editImage;
+
     public $createForm = [
+        'name' => null,
+        'slug' => null,
+        'icon' => null,
+        'image' => null,
+        'brands' => [],
+    ];
+
+    public $editForm = [
+        'open' => false,
         'name' => null,
         'slug' => null,
         'icon' => null,
@@ -81,6 +93,19 @@ class CreateCategory extends Component
 
         $this->getCategories();
         $this->emit('saved');
+    }
+
+    public function edit(Category $category)
+    {
+        $this->category = $category;
+
+        $this->editForm['open'] = true;
+        $this->editForm['name'] = $category->name;
+        $this->editForm['slug'] = $category->slug;
+        $this->editForm['icon'] = $category->icon;
+        $this->editForm['image'] = $category->image;
+        $this->editForm['brands'] = $category->brands->pluck('id');
+
     }
 
     public function delete(Category $category)
