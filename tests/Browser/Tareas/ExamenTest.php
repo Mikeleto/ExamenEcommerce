@@ -138,7 +138,7 @@ class ExamenTest extends DuskTestCase
                 ->pause(600)
                 ->select('#color3', 1)
                 ->pause(600)
-                ->click('@buy')
+                ->click('@comprar')
                 ->pause(600)
               
                 
@@ -151,7 +151,7 @@ class ExamenTest extends DuskTestCase
                 ->pause(600)
                 ->select('#color3', 1)
                 ->pause(1000)
-                ->click('@buy')
+                ->click('@comprarColor')
                 ->pause(600)
                 ->click('@carrito')
                 ->screenshot('hola')

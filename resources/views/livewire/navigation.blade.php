@@ -22,7 +22,7 @@
             @auth
                 <x-jet-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button dusk="perfil" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                        <button dusk="perfilLogued" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                             <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                         </button>
                     </x-slot>
@@ -64,7 +64,7 @@
             @else
                 <x-jet-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <i dusk="perfilLogued" class="fas fa-user-circle text-white text-3xl cursor-pointer"></i>
+                        <i dusk="perfil" class="fas fa-user-circle text-white text-3xl cursor-pointer"></i>
                     </x-slot>
 
                     <x-slot  name="content">
