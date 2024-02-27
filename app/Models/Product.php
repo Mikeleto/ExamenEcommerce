@@ -51,4 +51,13 @@ class Product extends Model
     {
         return $this->hasManyThrough(OrderItem::class, Order::class);
     }
+
+    public function scopeOrderByReservedQuantity($query, $direction = 'asc')
+{
+    return $query->select('products.*')
+        ->addSelect(\DB::raw('(SELECT SUM(order_items.quantity) FROM orders
+            JOIN order_items ON orders.id = order_items.order_id
+            WHERE orders.status = 1 AND order_items.product_id = products.id) AS reserved_quantity'))
+        ->orderBy('reserved_quantity', $direction);
+}
 }

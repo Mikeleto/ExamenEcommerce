@@ -39,11 +39,11 @@
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Precio
                                             </th>
-                                            <th scope="col"
+                                            <th scope="col" wire:click="sortBy('sold')"  
                                              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Vendidos
                                              </th>
-                                             <th scope="col"
+                                             <th scope="col" wire:click="sortBy('reserved')" 
                                              class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Reservados
                                              </th>
