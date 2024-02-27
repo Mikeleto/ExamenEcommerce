@@ -17,12 +17,14 @@
                 x-bind:disabled="$wire.qty >= $wire.quantity"
                 wire:loading.attr="disabled"
                 wire:target="increment"
-                wire:click="increment">
+                wire:click="increment"
+                >
                 +
             </x-jet-secondary-button >
         </div>
         <div class="flex-1">
             <x-button
+            dusk="buy"
                 x-bind:disabled="$wire.qty > $wire.quantity"
                 wire:click="addItem"
                 wire:loading.attr="disabled"
