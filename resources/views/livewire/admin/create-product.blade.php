@@ -5,7 +5,7 @@
     <div class="grid grid-cols-2 gap-6 mb-4">
         <div>
             <x-jet-label value="Categorías" />
-            <select class="w-full form-control" wire:model="category_id">
+            <select  dusk="categoria" class="w-full form-control" wire:model="category_id">
                 <option value="" selected disabled>Seleccione una categoría</option>
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -15,7 +15,7 @@
         </div>
         <div>
             <x-jet-label value="Subcategorías" />
-            <select class="w-full form-control" wire:model="subcategory_id">
+            <select dusk="subcategoria" class="w-full form-control" wire:model="subcategory_id">
                 <option value="" selected disabled>Seleccione una subcategoría</option>
                 @foreach($subcategories as $subcategory)
                     <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
@@ -28,7 +28,7 @@
     <div class="mb-4">
         <div class="mb-4">
             <x-jet-label value="Nombre" />
-            <x-jet-input type="text"
+            <x-jet-input dusk="nombre" type="text"
                          class="w-full"
                          wire:model="name"
                          placeholder="Ingrese el nombre del producto" />
@@ -70,7 +70,7 @@
     <div class="grid grid-cols-2 gap-6 mb-4">
         <div class="mb-4">
             <x-jet-label value="Marca" />
-            <select class="form-control w-full" wire:model="brand_id">
+            <select dusk="marca" class="form-control w-full" wire:model="brand_id">
                 <option value="" selected disabled>Seleccione una marca</option>
                 @foreach ($brands as $brand)
                     <option value="{{$brand->id}}">{{$brand->name}}</option>
@@ -80,7 +80,7 @@
         </div>
         <div>
             <x-jet-label value="Precio" />
-            <x-jet-input
+            <x-jet-input dusk="precio"
                 wire:model="price"
                 type="number"
                 class="w-full"
@@ -101,7 +101,7 @@
     @endif
 
     <div class="flex mt-4">
-        <x-jet-button
+        <x-jet-button dusk="crear"
             wire:loading.attr="disabled"
             wire:target="save"
             wire:click="save"

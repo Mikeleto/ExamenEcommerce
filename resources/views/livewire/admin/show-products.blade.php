@@ -4,7 +4,7 @@
             <h2 class="font-semibold text-xl text-gray-600">
                 Lista de productos
             </h2>
-            <x-button-link class="ml-auto" href="{{route('admin.products.create')}}">
+            <x-button-link dusk="agregarProducto" class="ml-auto" href="{{route('admin.products.create')}}">
                 Agregar producto
             </x-button-link>
         </div>
@@ -17,7 +17,7 @@
                     <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                         <x-table-responsive>
                             <div class="px-6 py-4">
-                                <x-jet-input class="w-full"
+                                <x-jet-input class="w-full" dusk="buscador"
                                              wire:model="search"
                                              type="text"
                                              placeholder="Introduzca el nombre del producto a buscar" />

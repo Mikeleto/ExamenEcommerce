@@ -5,7 +5,7 @@
             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                 <path class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
-            <span class="text-sm hidden sm:block" >
+            <span  dusk="categorias" class="text-sm hidden sm:block" >
                 Categorías
             </span>
         </a>
@@ -37,7 +37,7 @@
                             {{ __('Profile') }}
                         </x-jet-dropdown-link>
 
-                        <x-jet-dropdown-link href="{{ route('orders.index') }}">
+                        <x-jet-dropdown-link dusk="misPedidos"  href="{{ route('orders.index') }}">
                             {{ __('My Orders') }}
                         </x-jet-dropdown-link>
 
@@ -64,15 +64,15 @@
             @else
                 <x-jet-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <i class="fas fa-user-circle text-white text-3xl cursor-pointer"></i>
+                        <i dusk="perfilLogued" class="fas fa-user-circle text-white text-3xl cursor-pointer"></i>
                     </x-slot>
 
-                    <x-slot name="content">
-                        <x-jet-dropdown-link href="{{ route('login') }}">
+                    <x-slot  name="content">
+                        <x-jet-dropdown-link  dusk="login" href="{{ route('login') }}">
                             {{ __('Login') }}
                         </x-jet-dropdown-link>
 
-                        <x-jet-dropdown-link href="{{ route('register') }}">
+                        <x-jet-dropdown-link dusk="register" href="{{ route('register') }}">
                             {{ __('Register') }}
                         </x-jet-dropdown-link>
                     </x-slot>

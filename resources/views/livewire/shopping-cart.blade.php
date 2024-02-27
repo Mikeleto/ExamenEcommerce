@@ -60,7 +60,7 @@
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="text-sm text-gray-500">
                                 <span>{{ $item->price }} &euro;</span>
-                                <a class="ml-6 cursor-pointer hover:text-red-600"
+                                <a  dusk="borrarProducto" class="ml-6 cursor-pointer hover:text-red-600"
                                    wire:click="delete('{{ $item->rowId }}')"
                                    wire:loading.class="text-red-600 opacity-25"
                                    wire:target="delete('{{ $item->rowId }}')">
@@ -90,7 +90,7 @@
             </table>
 
             <div class="px-6 py-4">
-                <a class="text-sm cursor-pointer hover:underline mt-3 inline-block"
+                <a  dusk="borrarCarrito" class="text-sm cursor-pointer hover:underline mt-3 inline-block"
                    wire:click="destroy">
                     <i class="fas fa-trash"></i>
                     Borrar carrito de compras
@@ -117,7 +117,7 @@
                     {{ Cart::subtotal() }} &euro;
                 </div>
                 <div>
-                    <x-button-link href="{{ route('orders.create') }}">
+                    <x-button-link  dusk="continuar" href="{{ route('orders.create') }}">
                         Continuar
                     </x-button-link>
                 </div>

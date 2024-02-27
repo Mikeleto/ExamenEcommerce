@@ -169,7 +169,7 @@ class ExamenTest extends DuskTestCase
                 ->assertSee($p3->quantity)
                 ->pause(700)
                 ->screenshot('compras5')
-                ->press('@perfil')
+                ->press('@perfilLogued')
                 ->pause(600)
                 ->screenshot('compras6')
                 ->click('@logout')
