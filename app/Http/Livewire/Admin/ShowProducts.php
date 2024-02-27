@@ -6,6 +6,8 @@ use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithPagination;
 
+use App\Models\Order;
+
 class ShowProducts extends Component
 {
     use WithPagination;

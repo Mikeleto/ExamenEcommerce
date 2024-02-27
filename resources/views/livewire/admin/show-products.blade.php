@@ -39,6 +39,14 @@
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Precio
                                             </th>
+                                            <th scope="col"
+                                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Vendidos
+                                             </th>
+                                             <th scope="col"
+                                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Reservados
+                                             </th>
                                             <th scope="col" class="relative px-6 py-3">
                                                 <span class="sr-only">Editar</span>
                                             </th>
@@ -70,6 +78,13 @@
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                 {{ $product->price }} &euro;
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                             <div>{{ $product->sold }}</div>
+                                             </td>
+
+                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                             {{ $product->reservedQuantity() }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                 <a href="{{ route('admin.products.edit', $product) }}" class="text-indigo-600 hover:text-indigo-900">Editar</a>
