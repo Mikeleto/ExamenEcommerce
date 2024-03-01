@@ -32,6 +32,7 @@ class ProductFactory extends Factory
             'quantity'=> $subcategory->color ? null : 15,
             'status' => 2,
             'sold' => 0,
+            'pending' => 0,
         ];
     }
 }

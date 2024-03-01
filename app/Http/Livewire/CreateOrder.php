@@ -6,6 +6,7 @@ use App\Models\City;
 use App\Models\Department;
 use App\Models\District;
 use App\Models\Order;
+use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 
@@ -16,6 +17,7 @@ class CreateOrder extends Component
     public $address, $reference;
     public $departments, $cities = [], $districts = [];
     public $department_id = '', $city_id = '', $district_id = '';
+    public $order;
 
     public $rules = [
         'contact' => 'required',
@@ -45,6 +47,30 @@ class CreateOrder extends Component
         $this->districts = District::where('city_id', $value)->get();
 
         $this->reset('district_id');
+    }
+
+    public function pendingOrder() {
+        $this->productPending();
+        $this->order->status = 1;
+        $this->order->save();
+
+        return redirect()->route('orders.show', $this->order);
+    }
+
+    public function productPending(){
+        $items = json_decode(Cart::content());
+
+        foreach ($items as $item) {
+            $product = Product::find($item->id);
+    
+            if ($product) {
+                $product->pending += $item->qty;
+                $product->save();
+            } else {
+       
+            }
+        }
+
     }
 
     public function create_order()
@@ -84,6 +110,7 @@ class CreateOrder extends Component
         }
 
         $order->save();
+
 
         foreach (Cart::content() as $item) {
             discount($item);

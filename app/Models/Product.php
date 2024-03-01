@@ -12,7 +12,7 @@ class Product extends Model
     const BORRADOR = 1;
     const PUBLICADO = 2;
 
-    protected $fillable = ['name', 'slug', 'description', 'price', 'subcategory_id', 'brand_id', 'quantity', 'sold'];
+    protected $fillable = ['name', 'slug', 'description', 'price', 'subcategory_id', 'brand_id', 'quantity', 'sold', 'pending'];
 
     //protected $guarded = ['id', 'created_at', 'updated_at'];
     public function sizes() {
@@ -38,26 +38,10 @@ class Product extends Model
     public function getRouteKeyName() {
         return 'slug';
     }
-    public function reservedQuantity()
-    {
-        return \DB::table('orders')
-                    ->join('order_items', 'orders.id', '=', 'order_items.order_id')
-                    ->where('orders.status', '=', 1)
-                    ->where('order_items.product_id', $this->id)
-                    ->sum('order_items.quantity');
-    }
-    
-    public function orderItems()
-    {
-        return $this->hasManyThrough(OrderItem::class, Order::class);
-    }
 
-    public function scopeOrderByReservedQuantity($query, $direction = 'asc')
+    public function orders()
 {
-    return $query->select('products.*')
-        ->addSelect(\DB::raw('(SELECT SUM(order_items.quantity) FROM orders
-            JOIN order_items ON orders.id = order_items.order_id
-            WHERE orders.status = 1 AND order_items.product_id = products.id) AS reserved_quantity'))
-        ->orderBy('reserved_quantity', $direction);
+    return $this->hasMany(Order::class);
 }
+   
 }

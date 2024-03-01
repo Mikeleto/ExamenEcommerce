@@ -16,7 +16,12 @@ class ShowProducts extends Component
 
     public $orderBy = 'name'; 
     public $orderDirection = 'asc';
+    public $pendingOrdersCount;
 
+    public function loadPendingOrdersCount()
+    {
+        $this->pendingOrdersCount = Order::pendingOrdersCount();
+    }
 
     public function sortBy($column)
 {
@@ -36,7 +41,7 @@ class ShowProducts extends Component
     {
         $query = Product::query();
     
-       
+        $this->loadPendingOrdersCount();
         if ($this->search) {
             $query->where('name', 'LIKE', "%{$this->search}%");
         }
@@ -44,16 +49,17 @@ class ShowProducts extends Component
        
         if ($this->orderBy == 'sold') {
             $query->orderBy('sold', $this->orderDirection);
-        } elseif ($this->orderBy == 'reserved') {
-            $query->orderByReservedQuantity($this->orderDirection);
-        } else {
+        }else {
         
             $query->orderBy('name', 'asc');
         }
     
       
         $products = $query->paginate(10);
-    
-        return view('livewire.admin.show-products', compact('products'))->layout('layouts.admin');
+        
+        return view('livewire.admin.show-products', [
+            'products' => $products,
+            'pendingOrdersCount' => $this->pendingOrdersCount,
+        ])->layout('layouts.admin');
     }
 }

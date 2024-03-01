@@ -18,11 +18,13 @@ class PaymentOrder extends Component
     public function mount(Order $order) {
         $this->order = $order;
     }
+    
 
     public function payOrder() {
         $this->productSold();
         $this->order->status = 2;
         $this->order->save();
+
         return redirect()->route('orders.show', $this->order);
     }
 
@@ -34,6 +36,8 @@ class PaymentOrder extends Component
             $product->save();
         }
     }
+
+ 
 
     public function render() {
         $this->authorize('view', $this->order);

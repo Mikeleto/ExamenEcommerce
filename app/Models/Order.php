@@ -36,4 +36,10 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public static function pendingOrdersCount()
+{
+    return self::where('status', '=', self::PENDIENTE)->count();
+}
+
 }
